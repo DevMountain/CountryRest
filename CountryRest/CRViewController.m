@@ -7,8 +7,14 @@
 //
 
 #import "CRViewController.h"
+#import "CountryController.h"
 
 @interface CRViewController ()
+
+@property (nonatomic, strong) IBOutlet UITextField *nameField;
+@property (nonatomic, strong) IBOutlet UILabel *nameLabel;
+@property (nonatomic, strong) IBOutlet UILabel *capitalLabel;
+@property (nonatomic, strong) IBOutlet UILabel *populationLabel;
 
 @end
 
@@ -17,13 +23,21 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction)search:(id)sender {
+    
+    [[CountryController sharedInstance] getCountriesWithName:[self.nameField.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] completion:^(NSArray *countries) {
+        
+        Country *firstCountry = countries.firstObject;
+        
+        self.nameLabel.text = firstCountry.name;
+        self.capitalLabel.text = firstCountry.capital;
+        self.populationLabel.text = [NSString stringWithFormat:@"%@", firstCountry.population];
+        
+    }];
+
 }
 
 @end
