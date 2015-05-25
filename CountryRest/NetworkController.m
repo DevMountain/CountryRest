@@ -10,7 +10,7 @@
 
 @implementation NetworkController
 
-+ (AFHTTPSessionManager *)api {
++ (AFHTTPSessionManager *)sharedInstance {
 
     static AFHTTPSessionManager *api = nil;
     static dispatch_once_t onceToken;

@@ -20,16 +20,11 @@
 
 @implementation CRViewController
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-
-}
-
 - (IBAction)search:(id)sender {
-    
-    [[CountryController sharedInstance] getCountriesWithName:[self.nameField.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] completion:^(NSArray *countries) {
-        
+	
+	NSString *countryName = self.nameField.text;
+    [[CountryController sharedInstance] retrieveCountriesWithName:countryName completion:^(NSArray *countries) {
+		
         Country *firstCountry = countries.firstObject;
         
         self.nameLabel.text = firstCountry.name;

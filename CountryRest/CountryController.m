@@ -20,11 +20,12 @@
     return sharedInstance;
 }
 
-- (void)getCountriesWithName:(NSString *)name completion:(void (^)(NSArray *countries))completion {
+- (void)retrieveCountriesWithName:(NSString *)name completion:(void (^)(NSArray *countries))completion {
 
+	name = [name stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSString *path = [NSString stringWithFormat:@"name/%@", name];
     
-    [[NetworkController api] GET:path parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [[NetworkController sharedInstance] GET:path parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSArray *responseContries = responseObject;
         
         NSMutableArray *countries = [NSMutableArray new];

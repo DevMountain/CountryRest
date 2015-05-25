@@ -13,6 +13,6 @@
 
 + (CountryController *)sharedInstance;
 
-- (void)getCountriesWithName:(NSString *)name completion:(void (^)(NSArray *countries))completion;
+- (void)retrieveCountriesWithName:(NSString *)name completion:(void (^)(NSArray *countries))completion;
 
 @end
