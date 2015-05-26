@@ -25,7 +25,7 @@
 	name = [name stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSString *path = [NSString stringWithFormat:@"name/%@", name];
     
-    [[NetworkController sharedInstance] GET:path parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [[NetworkController api] GET:path parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSArray *responseContries = responseObject;
         
         NSMutableArray *countries = [NSMutableArray new];
