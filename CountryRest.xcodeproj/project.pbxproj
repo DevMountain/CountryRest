@@ -38,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2B4780D86E54DB8CE916C970 /* Pods-CountryRest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountryRest.release.xcconfig"; path = "Pods/Target Support Files/Pods-CountryRest/Pods-CountryRest.release.xcconfig"; sourceTree = "<group>"; };
+		5A54301477D4158A1023A648 /* Pods-CountryRest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountryRest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CountryRest/Pods-CountryRest.debug.xcconfig"; sourceTree = "<group>"; };
 		635522CEA4FC497D8AC78870 /* libPods-CountryRest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CountryRest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7167C63919501F7F00FD8F55 /* CountryRest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CountryRest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7167C63C19501F7F00FD8F55 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -64,7 +66,6 @@
 		7167C675195025EB00FD8F55 /* CountryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryController.m; sourceTree = "<group>"; };
 		7167C677195026DA00FD8F55 /* Country.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Country.h; sourceTree = "<group>"; };
 		7167C678195026DA00FD8F55 /* Country.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Country.m; sourceTree = "<group>"; };
-		CF0EF14BE7994F7A89BF25DE /* Pods-CountryRest.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountryRest.xcconfig"; path = "Pods/Pods-CountryRest.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,7 +100,7 @@
 				7167C66119501F7F00FD8F55 /* CountryRestTests */,
 				7167C63B19501F7F00FD8F55 /* Frameworks */,
 				7167C63A19501F7F00FD8F55 /* Products */,
-				CF0EF14BE7994F7A89BF25DE /* Pods-CountryRest.xcconfig */,
+				721741B8FD94EBE498216A11 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -171,6 +172,15 @@
 				7167C66419501F7F00FD8F55 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		721741B8FD94EBE498216A11 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5A54301477D4158A1023A648 /* Pods-CountryRest.debug.xcconfig */,
+				2B4780D86E54DB8CE916C970 /* Pods-CountryRest.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,7 +291,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-CountryRest-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CountryRest/Pods-CountryRest-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		ED72F5C68C684F53940E05A6 /* Check Pods Manifest.lock */ = {
@@ -433,7 +443,7 @@
 		};
 		7167C66C19501F7F00FD8F55 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CF0EF14BE7994F7A89BF25DE /* Pods-CountryRest.xcconfig */;
+			baseConfigurationReference = 5A54301477D4158A1023A648 /* Pods-CountryRest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -447,7 +457,7 @@
 		};
 		7167C66D19501F7F00FD8F55 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CF0EF14BE7994F7A89BF25DE /* Pods-CountryRest.xcconfig */;
+			baseConfigurationReference = 2B4780D86E54DB8CE916C970 /* Pods-CountryRest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
