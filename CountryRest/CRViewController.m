@@ -8,6 +8,7 @@
 
 #import "CRViewController.h"
 #import "CountryController.h"
+#import <SVProgressHUD/SVProgressHUD.h>
 
 @interface CRViewController ()
 
@@ -21,6 +22,8 @@
 @implementation CRViewController
 
 - (IBAction)search:(id)sender {
+    
+    [SVProgressHUD show];
 	
 	NSString *countryName = self.nameField.text;
     [[CountryController sharedInstance] retrieveCountriesWithName:countryName completion:^(NSArray *countries) {
@@ -31,6 +34,8 @@
             self.nameLabel.text = firstCountry.name;
             self.capitalLabel.text = firstCountry.capital;
             self.populationLabel.text = [NSString stringWithFormat:@"%@", firstCountry.population];
+            
+            [SVProgressHUD dismiss];
         });
         
     }];
