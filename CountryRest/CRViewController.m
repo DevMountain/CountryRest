@@ -27,9 +27,11 @@
 		
         Country *firstCountry = countries.firstObject;
         
-        self.nameLabel.text = firstCountry.name;
-        self.capitalLabel.text = firstCountry.capital;
-        self.populationLabel.text = [NSString stringWithFormat:@"%@", firstCountry.population];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.nameLabel.text = firstCountry.name;
+            self.capitalLabel.text = firstCountry.capital;
+            self.populationLabel.text = [NSString stringWithFormat:@"%@", firstCountry.population];
+        });
         
     }];
 

@@ -7,7 +7,9 @@
 //
 
 #import "CountryController.h"
-#import "NetworkController.h"
+
+static NSString * const kAPIURL = @"http://restcountries.eu/rest/v1/";
+
 
 @implementation CountryController
 
@@ -23,21 +25,31 @@
 - (void)retrieveCountriesWithName:(NSString *)name completion:(void (^)(NSArray *countries))completion {
 
 	name = [name stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSString *path = [NSString stringWithFormat:@"name/%@", name];
+    NSURL *URLWithPath = [NSURL URLWithString:[NSString stringWithFormat:@"%@name/%@", kAPIURL, name]];
     
-    [[NetworkController api] GET:path parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSArray *responseContries = responseObject;
+    NSURLSession *session = [NSURLSession sharedSession];
+    
+    NSURLSessionDataTask *task = [session dataTaskWithURL:URLWithPath completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         
-        NSMutableArray *countries = [NSMutableArray new];
-        for (NSDictionary *dictionary in responseContries) {
-            [countries addObject:[[Country alloc] initWithDictionary:dictionary]];
+        NSError *dataTaskError;
+        
+        NSArray *responseCountries = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
+        
+        if (error) {
+            NSLog(@"%@", dataTaskError);
+            
+            completion(nil);
+        } else {
+            NSMutableArray *countries = [NSMutableArray new];
+            for (NSDictionary *dictionary in responseCountries) {
+                [countries addObject:[[Country alloc] initWithDictionary:dictionary]];
+            }
+            
+            completion(countries);
         }
-        
-        completion(countries);
-        
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        completion(nil);
     }];
+    
+    [task resume];
 }
 
 @end
