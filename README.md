@@ -7,7 +7,7 @@ An iOS app that uses the free restcountries.eu api.
 - Initialize pods to get a podfile
   - ```pod init```
 - Add AFNetworking to the podfile
-  - ```pod 'SVProgressHUD```
+  - ```pod 'SVProgressHUD'```
 - Run pod install command
   - ```pod install```
   
